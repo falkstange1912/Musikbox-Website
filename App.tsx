@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, CheckCircle2, ChevronRight, Play, MapPin, Phone, Mail } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Play, MapPin, Phone, Mail, Calendar, Ticket } from 'lucide-react';
 
 export default function App() {
   const emailAdresse = "info@musikbox-cremlingen.de"; 
@@ -22,8 +22,8 @@ export default function App() {
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
             <a href="#angebote" className="hover:text-red-600 transition-colors">Unterricht</a>
+            <a href="#modelle" className="hover:text-red-600 transition-colors">Preise & Einstieg</a>
             <a href="#philosophie" className="hover:text-red-600 transition-colors">Philosophie</a>
-            <a href="#team" className="hover:text-red-600 transition-colors">Leitung</a>
             <a href={`mailto:${emailAdresse}`} className="hover:text-red-600 transition-colors">Kontakt</a>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
@@ -35,14 +35,11 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Padding auf dem Handy verkleinert (pt-24 statt pt-32) */}
       <main className="pt-24 md:pt-32 pb-0">
         
         {/* 🟢 BEREICH 2: STARTBILDSCHIRM (HERO SECTION) */}
-        {/* Lücken (gap) für Handys optimiert */}
         <section className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[70vh]">
           
-          {/* NEU: EINLADENDES BILD NUR FÜR HANDYS GANZ OBEN */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +60,6 @@ export default function App() {
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 SEIT 2005 IN CREMLINGEN
               </div>
-              {/* Schriftgröße auf Handys (text-4xl) etwas kompakter */}
               <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
                 Dein Raum für <br/>
                 <span className="text-red-600">Musik & Tanz</span>.
@@ -92,7 +88,6 @@ export default function App() {
             </motion.div>
           </div>
 
-          {/* Desktop-Collage bleibt für große Bildschirme erhalten */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -115,8 +110,7 @@ export default function App() {
         </section>
 
         {/* 🟢 BEREICH 3: UNSERE ANGEBOTE */}
-        {/* py-20 für Handy, py-32 für Desktop */}
-        <section id="angebote" className="py-20 lg:py-32 relative bg-white border-y border-gray-100">
+        <section id="angebote" className="py-20 lg:py-32 relative bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-12 lg:mb-16 text-center md:text-left">
               <span className="text-red-600 font-display font-extrabold tracking-widest text-sm uppercase">Unser Angebot</span>
@@ -167,8 +161,106 @@ export default function App() {
           </div>
         </section>
 
+        {/* 🟢 BEREICH 3.5: SO FUNKTIONIERT'S & 10ER KARTE (NEU) */}
+        <section id="modelle" className="py-20 lg:py-32 bg-gray-900 text-white relative overflow-hidden">
+          {/* Roter Akzent im Hintergrund */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/20 rounded-full blur-[150px] -z-10" />
+          
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-red-500 font-display font-extrabold tracking-widest text-sm uppercase">Der Start</span>
+              <h2 className="text-3xl md:text-5xl font-display font-black mt-4 mb-6 leading-tight">
+                Ganz einfach mitmachen.
+              </h2>
+              <p className="text-lg text-gray-400 font-medium">
+                Bei uns sind alle Altersgruppen willkommen! Von der musikalischen Früherziehung (ab 1,5 Jahren) bis zum Erwachsenenalter. Keine Vorkenntnisse nötig – wir stellen dir für den Start sogar ein Leihinstrument.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+              
+              {/* Regelmäßiger Unterricht */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-10"
+              >
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                  <Calendar className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-black mb-4">Regelmäßiger Unterricht</h3>
+                <p className="text-gray-400 mb-8 font-medium">
+                  Dein fester wöchentlicher Termin für maximalen Fortschritt. Perfekt, wenn du dein Instrument richtig meistern möchtest.
+                </p>
+                <ul className="space-y-4 font-medium text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span>Jede Woche 25 oder 45 Minuten</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span>Fester Monatsbeitrag (zzgl. Aufnahmegebühr)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span>Einstieg jederzeit im laufenden Monat (anteilig)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <span>Fair: Kündbar mit 8 Wochen Frist zum Quartalsende</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              {/* Die 10er-Karte (Highlight) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-gradient-to-br from-red-600 to-red-800 rounded-3xl p-8 lg:p-10 shadow-2xl shadow-red-900/50 relative overflow-hidden"
+              >
+                {/* Deko-Element */}
+                <div className="absolute -top-12 -right-12 text-white/10 rotate-12">
+                  <Ticket className="w-48 h-48" />
+                </div>
+                
+                <div className="relative z-10">
+                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-white text-xs font-bold tracking-wide mb-6">
+                    MAXIMALE FLEXIBILITÄT
+                  </div>
+                  <h3 className="text-2xl font-black mb-4 text-white">Unsere 10er-Karte</h3>
+                  <p className="text-red-100 mb-8 font-medium">
+                    Du hast unregelmäßige Arbeitszeiten oder möchtest einfach verschiedene Instrumente kreuz und quer testen? Dann ist die 10er-Karte perfekt!
+                  </p>
+                  <ul className="space-y-4 font-medium text-white">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-red-300 shrink-0 mt-0.5" />
+                      <span>Volle Flexibilität ohne Vertragsbindung</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-red-300 shrink-0 mt-0.5" />
+                      <span>Termine nach persönlicher Absprache</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-red-300 shrink-0 mt-0.5" />
+                      <span>Verschiedene Instrumente ausprobieren</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                      <span className="font-bold">Nach 10 Terminen ist automatisch Schluss</span>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
         {/* 🟢 BEREICH 4: ÜBER UNS & PHILOSOPHIE */}
-        <section id="philosophie" className="py-20 lg:py-32 bg-gray-50">
+        <section id="philosophie" className="py-20 lg:py-32 bg-gray-50 border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               
@@ -236,7 +328,7 @@ export default function App() {
                 Lust auf ein <span className="text-red-600 italic">Abenteuer?</span>
               </h2>
               <p className="text-lg lg:text-xl text-gray-600 mb-10 lg:mb-12 max-w-2xl mx-auto font-medium">
-                Komm in Cremlingen vorbei und probiere dein Wunschinstrument oder deine Tanzrichtung einfach aus. Wir freuen uns auf dich!
+                Melde dich einfach bei uns. Und wenn es doch nicht das Richtige ist? Kein Problem – <strong className="text-gray-900">die Probestunde bleibt gratis!</strong>
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
