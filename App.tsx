@@ -37,7 +37,7 @@ export default function App() {
 
       <main className="pt-32 pb-24">
         
-        {/* 🟢 BEREICH 2: STARTBILDSCHIRM (HERO SECTION) */}
+           {/* 🟢 BEREICH 2: STARTBILDSCHIRM (HERO SECTION) */}
         <section className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
           <div className="space-y-8 z-10">
             <motion.div 
@@ -46,12 +46,10 @@ export default function App() {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              {/* Ein freundlicher, farbiger Badge für Kinder/Eltern */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 border border-yellow-200 text-yellow-800 text-xs font-bold tracking-wide shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 [🎉 JETZT ANMELDEN FÜR DIE NEUEN KURSE!]
               </div>
-              {/* Die Hauptüberschrift - Große, freundliche dunkle Buchstaben */}
               <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
                 [Hier eine einladende <br/>
                 <span className="text-red-600">Überschrift</span><br/>
@@ -81,25 +79,25 @@ export default function App() {
             </motion.div>
           </div>
 
-          {/* Rechte Seite: Kinderfreundliche, weiche Formen für die Bilder */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-[600px] w-full hidden lg:block"
           >
-            {/* Hauptbild-Kreis mit weicherem Look */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full overflow-hidden border-4 border-white z-10 shadow-xl bg-amber-100 flex items-center justify-center">
-               <span className="text-amber-700 font-bold">[BILD: Kinder/Schüler am Instrument]</span>
+            {/* Hauptbild-Kreis: Kind am Instrument */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full overflow-hidden border-4 border-white z-10 shadow-xl">
+               <img src="https://images.unsplash.com/photo-1514119412350-e174d90d280e?q=80&w=800&auto=format&fit=crop" alt="Musikunterricht für Kinder" className="w-full h-full object-cover" />
             </div>
             
-            {/* Kleine, verspielte bunte Hintergrund-Kreise */}
-            <div className="absolute top-[10%] -left-[5%] w-44 h-44 rounded-full overflow-hidden border-4 border-white bg-blue-100 flex items-center justify-center opacity-90 shadow-lg animate-[float_6s_ease-in-out_infinite]">
-                <span className="text-blue-700 text-xs font-bold">[Fröhliches Bild]</span>
+            {/* Kleiner Kreis 1: Detail Gitarre/Freude */}
+            <div className="absolute top-[10%] -left-[5%] w-44 h-44 rounded-full overflow-hidden border-4 border-white opacity-90 shadow-lg animate-[float_6s_ease-in-out_infinite]">
+                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800&auto=format&fit=crop" alt="Gitarre spielen" className="w-full h-full object-cover" />
             </div>
 
-            <div className="absolute bottom-[15%] -right-[5%] w-40 h-40 rounded-full overflow-hidden border-4 border-white bg-green-100 flex items-center justify-center opacity-90 shadow-lg animate-[float_8s_ease-in-out_infinite_reverse]">
-               <span className="text-green-700 text-xs font-bold">[Studio/Lehrer]</span>
+            {/* Kleiner Kreis 2: Fröhliches Detail */}
+            <div className="absolute bottom-[15%] -right-[5%] w-40 h-40 rounded-full overflow-hidden border-4 border-white opacity-90 shadow-lg animate-[float_8s_ease-in-out_infinite_reverse]">
+               <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?q=80&w=800&auto=format&fit=crop" alt="Spaß an der Musik" className="w-full h-full object-cover" />
             </div>
 
             {/* Weiche, bunte Farbwolken im Hintergrund für den "kinderfreundlichen" Touch */}
@@ -108,6 +106,7 @@ export default function App() {
             <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-blue-200/30 rounded-full blur-[100px] -z-10" />
           </motion.div>
         </section>
+
 
         {/* 🟢 BEREICH 3: UNSERE INSTRUMENTE / ANGEBOTE */}
         <section className="py-32 relative bg-white border-y border-gray-100">
