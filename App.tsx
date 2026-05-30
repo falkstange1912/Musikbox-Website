@@ -3,29 +3,31 @@ import { ArrowRight, CheckCircle2, ChevronRight, Music, Play } from 'lucide-reac
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#050505] text-gray-200 font-sans selection:bg-blue-600 selection:text-white">
+    // Hintergrund ist jetzt hell (bg-gray-50) und Schrift dunkel (text-gray-800)
+    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans selection:bg-red-600 selection:text-white">
       
-      {/* 🟢 BEREICH 1: NAVIGATION (HEADER) */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md">
+      {/* 🟢 BEREICH 1: NAVIGATION (HEADER) - Jetzt hell mit feiner Linie */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 border-b border-gray-200 bg-white/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center">
-              {/* Hier kommt später das Firmenlogo hin */}
-              <Music className="w-5 h-5 text-white" />
+            {/* Das Logo-Symbol: Jetzt Schwarz mit roter Musiknote */}
+            <div className="w-8 h-8 rounded bg-black flex items-center justify-center shadow-md">
+              <Music className="w-5 h-5 text-red-500" />
             </div>
             {/* Firmenname */}
-            <span className="font-display font-bold text-xl tracking-wider text-white">
-              [FIRMENNAME]
+            <span className="font-display font-black text-xl tracking-wider text-black">
+              MUSIKBOX
             </span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Leistungen</a>
-            <a href="#" className="hover:text-white transition-colors">Über uns</a>
-            <a href="#" className="hover:text-white transition-colors">Referenzen</a>
-            <a href="#" className="hover:text-white transition-colors">Kontakt</a>
+          <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
+            <a href="#" className="hover:text-red-600 transition-colors">Unterricht & Kurse</a>
+            <a href="#" className="hover:text-red-600 transition-colors">Über uns</a>
+            <a href="#" className="hover:text-red-600 transition-colors">Preise</a>
+            <a href="#" className="hover:text-red-600 transition-colors">Kontakt</a>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full transition-colors flex items-center gap-2">
+            {/* Der Haupt-Button glänzt jetzt im Logo-Rot */}
+            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md shadow-red-600/10 hover:shadow-red-600/20 flex items-center gap-2">
               [Kontakt aufnehmen]
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -44,14 +46,16 @@ export default function App() {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium tracking-wide">
-                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                [AKTUELLES ANGEBOT / NEWS]
+              {/* Ein freundlicher, farbiger Badge für Kinder/Eltern */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 border border-yellow-200 text-yellow-800 text-xs font-bold tracking-wide shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                [🎉 JETZT ANMELDEN FÜR DIE NEUEN KURSE!]
               </div>
-              <h1 className="font-display text-6xl md:text-8xl font-bold leading-[1.05] tracking-tight text-white">
-                [Starke Headline] <br/>
-                <span className="text-orange-500">[Haupt-Nutzen]</span><br/>
-                [Zusatz].
+              {/* Die Hauptüberschrift - Große, freundliche dunkle Buchstaben */}
+              <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
+                [Hier eine einladende <br/>
+                <span className="text-red-600">Überschrift</span><br/>
+                für Groß & Klein].
               </h1>
             </motion.div>
 
@@ -59,9 +63,9 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xl text-gray-400 max-w-lg leading-relaxed"
+              className="text-xl text-gray-600 max-w-lg leading-relaxed font-medium"
             >
-              [PLATZHALTER: Ein kurzer, überzeugender Text darüber, welches Problem das Unternehmen löst und warum der Kunde hier richtig ist.]
+              [PLATZHALTER: Ein herzlicher Text, der Eltern und Kindern sofort zeigt, dass Musikunterricht hier richtig viel Spaß macht und ohne Leistungsdruck funktioniert.]
             </motion.p>
 
             <motion.div 
@@ -70,63 +74,71 @@ export default function App() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
             >
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 flex items-center gap-2 group">
-                [Haupt-Button]
+              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center gap-2 group">
+                [Kostenlose Probestunde]
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
           </div>
 
+          {/* Rechte Seite: Kinderfreundliche, weiche Formen für die Bilder */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-[600px] w-full hidden lg:block"
           >
-            {/* Hier können später Bilder des Unternehmens eingefügt werden */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full overflow-hidden border-2 border-white/10 z-10 shadow-2xl bg-white/5 flex items-center justify-center">
-               <span className="text-gray-500">[PLATZHALTER: HAUPTBILD]</span>
+            {/* Hauptbild-Kreis mit weicherem Look */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full overflow-hidden border-4 border-white z-10 shadow-xl bg-amber-100 flex items-center justify-center">
+               <span className="text-amber-700 font-bold">[BILD: Kinder/Schüler am Instrument]</span>
             </div>
             
-            <div className="absolute top-[10%] -left-[10%] w-48 h-48 rounded-full overflow-hidden border border-white/20 bg-white/5 flex items-center justify-center opacity-70 animate-[float_6s_ease-in-out_infinite]">
-                <span className="text-gray-500 text-sm">[BILD 2]</span>
+            {/* Kleine, verspielte bunte Hintergrund-Kreise */}
+            <div className="absolute top-[10%] -left-[5%] w-44 h-44 rounded-full overflow-hidden border-4 border-white bg-blue-100 flex items-center justify-center opacity-90 shadow-lg animate-[float_6s_ease-in-out_infinite]">
+                <span className="text-blue-700 text-xs font-bold">[Fröhliches Bild]</span>
             </div>
 
-            <div className="absolute bottom-[20%] -right-[5%] w-40 h-40 rounded-full overflow-hidden border border-white/20 bg-white/5 flex items-center justify-center opacity-80 shadow-xl animate-[float_8s_ease-in-out_infinite_reverse]">
-               <span className="text-gray-500 text-sm">[BILD 3]</span>
+            <div className="absolute bottom-[15%] -right-[5%] w-40 h-40 rounded-full overflow-hidden border-4 border-white bg-green-100 flex items-center justify-center opacity-90 shadow-lg animate-[float_8s_ease-in-out_infinite_reverse]">
+               <span className="text-green-700 text-xs font-bold">[Studio/Lehrer]</span>
             </div>
 
-            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] -z-10" />
+            {/* Weiche, bunte Farbwolken im Hintergrund für den "kinderfreundlichen" Touch */}
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-200/40 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-yellow-200/50 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-blue-200/30 rounded-full blur-[100px] -z-10" />
           </motion.div>
         </section>
 
-        {/* 🟢 BEREICH 3: EIGENSCHAFTEN / LEISTUNGEN */}
-        <section className="py-32 relative">
+        {/* 🟢 BEREICH 3: UNSERE INSTRUMENTE / ANGEBOTE */}
+        <section className="py-32 relative bg-white border-y border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
-              <span className="text-blue-500 font-display font-bold tracking-widest text-sm uppercase">[Kategorie]</span>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mt-4 max-w-2xl leading-tight">
-                [PLATZHALTER: Warum Kunden dieses Unternehmen wählen sollten.]
+            <div className="mb-16 text-center md:text-left">
+              <span className="text-red-600 font-display font-extrabold tracking-widest text-sm uppercase">[Unser Angebot]</span>
+              <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mt-4 max-w-2xl leading-tight">
+                [PLATZHALTER: Entdecke die Instrumente in der Musikbox.]
               </h2>
             </div>
 
+            {/* Die Leistungskarten sind jetzt weiß mit weichem Schatten */}
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "[Leistung / Vorteil 1]",
-                  desc: "[PLATZHALTER: Kurze Beschreibung, was dieser Vorteil dem Kunden bringt.]",
-                  icon: "01"
+                  title: "[Frühziehung & Kinder]",
+                  desc: "[PLATZHALTER: Spielerisch Musik entdecken für die ganz Kleinen. Singen, Trommeln und Spaß haben.]",
+                  icon: "01",
+                  color: "group-hover:text-yellow-500"
                 },
                 {
-                  title: "[Leistung / Vorteil 2]",
-                  desc: "[PLATZHALTER: Kurze Beschreibung, was dieser Vorteil dem Kunden bringt.]",
-                  icon: "02"
+                  title: "[Instrumentalunterricht]",
+                  desc: "[PLATZHALTER: Gitarre, Klavier, Schlagzeug und mehr für Kinder, Jugendliche und Erwachsene.]",
+                  icon: "02",
+                  color: "group-hover:text-red-500"
                 },
                 {
-                  title: "[Leistung / Vorteil 3]",
-                  desc: "[PLATZHALTER: Kurze Beschreibung, was dieser Vorteil dem Kunden bringt.]",
-                  icon: "03"
+                  title: "[Bands & Ensembles]",
+                  desc: "[PLATZHALTER: Gemeinsam mit anderen in einer echten Band spielen. Zusammen musizieren macht am meisten Spaß!]",
+                  icon: "03",
+                  color: "group-hover:text-blue-500"
                 }
               ].map((feature, i) => (
                 <motion.div 
@@ -135,13 +147,13 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors group"
+                  className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 group"
                 >
-                  <div className="text-5xl font-display font-bold text-white/10 group-hover:text-blue-500/20 transition-colors mb-8">
+                  <div className={`text-5xl font-display font-black text-gray-200 ${feature.color} transition-colors mb-8`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-white mb-4">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">
+                  <h3 className="text-2xl font-display font-black text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed font-medium">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -151,11 +163,7 @@ export default function App() {
         </section>
 
         {/* 🟢 BEREICH 4: ABSCHLUSS (CALL TO ACTION) */}
-        <section className="py-32 relative overflow-hidden">
-          <div className="absolute inset-0 z-0 bg-white/5">
-             <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-[#050505]" />
-          </div>
-          
+        <section className="py-32 relative overflow-hidden bg-gray-50">
           <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -163,16 +171,16 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                [PLATZHALTER: Letzte Aufforderung zur <span className="text-orange-500 italic">Aktion?</span>]
+              <h2 className="text-5xl md:text-6xl font-display font-black text-gray-900 mb-6 leading-tight">
+                [Lust auf ein <span className="text-red-600 italic">Abenteuer?</span>]
               </h2>
-              <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                [PLATZHALTER: Kurzer Text, der dem Kunden den letzten Schubs gibt, sich zu melden.]
+              <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto font-medium">
+                [PLATZHALTER: Komm vorbei und probiere dein Wunschinstrument einfach aus. Unsere Lehrer freuen sich schon auf dich!]
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-xl shadow-orange-600/20 flex items-center justify-center gap-3">
-                  [Letzter Button]
+                <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
+                  [Jetzt Probestunde vereinbaren]
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
@@ -181,14 +189,17 @@ export default function App() {
         </section>
       </main>
 
-      {/* 🟢 BEREICH 5: FOOTER */}
-      <footer className="border-t border-white/10 bg-[#020202] py-12">
+      {/* 🟢 BEREICH 5: FOOTER - Passend zum Logo: Schwarz */}
+      <footer className="bg-black text-gray-400 py-12 border-t border-gray-900">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <span className="font-display font-bold tracking-wider text-white">
-            [FIRMENNAME]
-          </span>
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} [FIRMENNAME]. Alle Rechte vorbehalten. | [Impressum] | [Datenschutz]
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-red-600 flex items-center justify-center">
+              <Music className="w-3 h-3 text-white" />
+            </div>
+            <span className="font-display font-black tracking-wider text-white">MUSIKBOX</span>
+          </div>
+          <p className="text-sm font-medium">
+            &copy; {new Date().getFullYear()} Musikbox Musikschule. Alle Rechte vorbehalten. | [Impressum] | [Datenschutz]
           </p>
         </div>
       </footer>
@@ -196,7 +207,7 @@ export default function App() {
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-20px) scale(1.02); }
+          50% { transform: translateY(-15px) scale(1.01); }
         }
       `}</style>
     </div>
