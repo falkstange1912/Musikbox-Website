@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle2, ChevronRight, Play, MapPin, Phone, Mail } from 'lucide-react';
 
 export default function App() {
-  // Die echten Kontaktdaten der Musikbox
   const emailAdresse = "info@musikbox-cremlingen.de"; 
   const telefon = "05306911273";
   const betreff = "Anfrage für eine Probestunde";
@@ -11,7 +10,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans selection:bg-red-600 selection:text-white">
       
       {/* 🟢 BEREICH 1: NAVIGATION (HEADER) */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 border-b border-gray-200 bg-white/85 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:py-6 border-b border-gray-200 bg-white/85 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded bg-black flex items-center justify-center shadow-md">
@@ -28,19 +27,32 @@ export default function App() {
             <a href={`mailto:${emailAdresse}`} className="hover:text-red-600 transition-colors">Kontakt</a>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md shadow-red-600/10 hover:shadow-red-600/20 flex items-center gap-2">
-              Kontakt aufnehmen
-              <ArrowRight className="w-4 h-4" />
+            <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 md:px-6 md:py-2.5 rounded-full font-bold transition-all shadow-md shadow-red-600/10 hover:shadow-red-600/20 flex items-center gap-2">
+              Kontakt
+              <ArrowRight className="w-4 h-4 hidden sm:block" />
             </a>
           </div>
         </div>
       </nav>
 
-      <main className="pt-32 pb-0">
+      {/* Padding auf dem Handy verkleinert (pt-24 statt pt-32) */}
+      <main className="pt-24 md:pt-32 pb-0">
         
         {/* 🟢 BEREICH 2: STARTBILDSCHIRM (HERO SECTION) */}
-        <section className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
-          <div className="space-y-8 z-10">
+        {/* Lücken (gap) für Handys optimiert */}
+        <section className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[70vh]">
+          
+          {/* NEU: EINLADENDES BILD NUR FÜR HANDYS GANZ OBEN */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full h-[220px] sm:h-[300px] rounded-3xl overflow-hidden shadow-xl lg:hidden relative mt-4"
+          >
+             <img src="https://images.unsplash.com/photo-1514119412350-e174d90d280e?q=80&w=800&auto=format&fit=crop" alt="Musikunterricht" className="w-full h-full object-cover" />
+          </motion.div>
+
+          <div className="space-y-6 lg:space-y-8 z-10">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,7 +63,8 @@ export default function App() {
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 SEIT 2005 IN CREMLINGEN
               </div>
-              <h1 className="font-display text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
+              {/* Schriftgröße auf Handys (text-4xl) etwas kompakter */}
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
                 Dein Raum für <br/>
                 <span className="text-red-600">Musik & Tanz</span>.
               </h1>
@@ -61,7 +74,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xl text-gray-600 max-w-lg leading-relaxed font-medium"
+              className="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed font-medium"
             >
               Von der elementaren Musikpädagogik über Gitarre und Klavier bis hin zu Kindertanz und Freestyle. Entdecke Unterricht, der motiviert und richtig Spaß macht!
             </motion.p>
@@ -70,15 +83,16 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:gap-6"
             >
-              <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center gap-2 group">
+              <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-2 group">
                 Kostenlose Probestunde
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
           </div>
 
+          {/* Desktop-Collage bleibt für große Bildschirme erhalten */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -101,16 +115,17 @@ export default function App() {
         </section>
 
         {/* 🟢 BEREICH 3: UNSERE ANGEBOTE */}
-        <section id="angebote" className="py-32 relative bg-white border-y border-gray-100">
+        {/* py-20 für Handy, py-32 für Desktop */}
+        <section id="angebote" className="py-20 lg:py-32 relative bg-white border-y border-gray-100">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16 text-center md:text-left">
+            <div className="mb-12 lg:mb-16 text-center md:text-left">
               <span className="text-red-600 font-display font-extrabold tracking-widest text-sm uppercase">Unser Angebot</span>
-              <h2 className="text-4xl md:text-5xl font-display font-black text-gray-900 mt-4 max-w-2xl leading-tight">
+              <h2 className="text-3xl md:text-5xl font-display font-black text-gray-900 mt-4 max-w-2xl leading-tight">
                 Entdecke das vielseitige Programm der Musikbox.
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
               {[
                 {
                   title: "Elementare Musikpädagogik",
@@ -137,13 +152,13 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 group"
+                  className="p-6 lg:p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 group"
                 >
-                  <div className={`text-5xl font-display font-black text-gray-200 ${feature.color} transition-colors mb-8`}>
+                  <div className={`text-4xl lg:text-5xl font-display font-black text-gray-200 ${feature.color} transition-colors mb-6 lg:mb-8`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-display font-black text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed font-medium">
+                  <h3 className="text-xl lg:text-2xl font-display font-black text-gray-900 mb-3 lg:mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed font-medium text-sm lg:text-base">
                     {feature.desc}
                   </p>
                 </motion.div>
@@ -152,12 +167,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* 🟢 BEREICH 4: ÜBER UNS & PHILOSOPHIE (NEU) */}
-        <section id="philosophie" className="py-32 bg-gray-50">
+        {/* 🟢 BEREICH 4: ÜBER UNS & PHILOSOPHIE */}
+        <section id="philosophie" className="py-20 lg:py-32 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               
-              {/* Die Philosophie */}
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -165,10 +179,10 @@ export default function App() {
                 transition={{ duration: 0.6 }}
               >
                 <span className="text-red-600 font-display font-extrabold tracking-widest text-sm uppercase">Philosophie</span>
-                <h2 className="text-4xl font-display font-black text-gray-900 mt-4 mb-8 leading-tight">
+                <h2 className="text-3xl lg:text-4xl font-display font-black text-gray-900 mt-4 mb-6 lg:mb-8 leading-tight">
                   „Musik ist kein <br/>Hochleistungssport.“
                 </h2>
-                <div className="space-y-6 text-lg text-gray-600 font-medium">
+                <div className="space-y-4 lg:space-y-6 text-base lg:text-lg text-gray-600 font-medium">
                   <p>
                     Bei uns geht es nicht nur darum, geschriebene Noten richtig wiederzugeben, sondern darum, <strong>Musik zu machen</strong>. Mit Musik kann man sich ausdrücken und Emotionen erfahren.
                   </p>
@@ -181,27 +195,25 @@ export default function App() {
                 </div>
               </motion.div>
 
-              {/* Das Profil von Tobias */}
               <motion.div 
                 id="team"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100"
+                className="bg-white p-6 lg:p-8 rounded-3xl shadow-xl border border-gray-100"
               >
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                  {/* PLATZHALTER: Hier wird später das echte Bild von Tobias eingefügt */}
-                  <div className="w-32 h-32 shrink-0 rounded-full overflow-hidden border-4 border-gray-50 shadow-md">
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 shrink-0 rounded-full overflow-hidden border-4 border-gray-50 shadow-md">
                     <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=400&auto=format&fit=crop" alt="Tobias Friedrich" className="w-full h-full object-cover" />
                   </div>
                   <div className="text-center sm:text-left">
-                    <h3 className="text-2xl font-black text-gray-900">Tobias Friedrich</h3>
-                    <p className="text-red-600 font-bold text-sm uppercase tracking-wider mb-4">Inhaber & Leitung</p>
+                    <h3 className="text-xl lg:text-2xl font-black text-gray-900">Tobias Friedrich</h3>
+                    <p className="text-red-600 font-bold text-xs lg:text-sm uppercase tracking-wider mb-3 lg:mb-4">Inhaber & Leitung</p>
                     <p className="text-gray-600 text-sm leading-relaxed font-medium">
                       Seit seiner frühsten Kindheit macht Tobias Musik. Er hat Bildungswissenschaft studiert und leitet die Musikbox seit der Gründung 2005 als zeitgemäße Bildungseinrichtung. 
                       <br/><br/>
-                      Neben E-Bass unterrichtet er Schlagzeug, Cajon, Bongo und sehr erfolgreich die Musikalische Früherziehung. Seit 1993 ist er zudem Bassist der Braunschweiger Band "Bluespower".
+                      Neben E-Bass unterrichtet er Schlagzeug, Cajon, Bongo und sehr erfolgreich die Musikalische Früherziehung.
                     </p>
                   </div>
                 </div>
@@ -212,7 +224,7 @@ export default function App() {
         </section>
 
         {/* 🟢 BEREICH 5: ABSCHLUSS (CALL TO ACTION) */}
-        <section className="py-32 relative overflow-hidden bg-white border-t border-gray-100">
+        <section className="py-20 lg:py-32 relative overflow-hidden bg-white border-t border-gray-100">
           <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -220,15 +232,15 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-5xl md:text-6xl font-display font-black text-gray-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-6xl font-display font-black text-gray-900 mb-6 leading-tight">
                 Lust auf ein <span className="text-red-600 italic">Abenteuer?</span>
               </h2>
-              <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto font-medium">
+              <p className="text-lg lg:text-xl text-gray-600 mb-10 lg:mb-12 max-w-2xl mx-auto font-medium">
                 Komm in Cremlingen vorbei und probiere dein Wunschinstrument oder deine Tanzrichtung einfach aus. Wir freuen uns auf dich!
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
+                <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-8 py-4 lg:px-10 lg:py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
                   Jetzt Probestunde vereinbaren
                   <ArrowRight className="w-5 h-5" />
                 </a>
@@ -238,11 +250,10 @@ export default function App() {
         </section>
       </main>
 
-      {/* 🟢 BEREICH 6: FOOTER MIT ECHTEN KONTAKTDATEN */}
-      <footer className="bg-black text-gray-400 py-16 border-t border-gray-900">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 items-center">
+      {/* 🟢 BEREICH 6: FOOTER */}
+      <footer className="bg-black text-gray-400 py-12 lg:py-16 border-t border-gray-900">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 lg:gap-12 items-center">
           
-          {/* Logo & Name */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded bg-black border border-gray-800 flex items-center justify-center">
@@ -255,7 +266,6 @@ export default function App() {
             </p>
           </div>
 
-          {/* Kontaktdaten */}
           <div className="flex flex-col items-center md:items-start gap-3 text-sm font-medium">
             <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
               <MapPin className="w-4 h-4 text-red-600" />
@@ -271,7 +281,6 @@ export default function App() {
             </a>
           </div>
 
-          {/* Rechtliches */}
           <div className="flex flex-col items-center md:items-end gap-2 text-sm font-medium">
             <p>&copy; {new Date().getFullYear()} Musikbox Cremlingen.</p>
             <div className="flex gap-4">
