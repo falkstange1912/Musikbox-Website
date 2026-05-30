@@ -2,6 +2,11 @@ import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle2, ChevronRight, Play } from 'lucide-react';
 
 export default function App() {
+  // Hier definieren wir die E-Mail-Adresse der Musikbox. 
+  // Das kannst du später einfach anpassen.
+  const emailAdresse = "info@musikbox.de"; 
+  const betreff = "Anfrage für eine Probestunde";
+
   return (
     // Hintergrund ist hell (bg-gray-50) und Schrift dunkel (text-gray-800)
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans selection:bg-red-600 selection:text-white">
@@ -23,13 +28,14 @@ export default function App() {
             <a href="#" className="hover:text-red-600 transition-colors">Musikunterricht</a>
             <a href="#" className="hover:text-red-600 transition-colors">Tanzunterricht</a>
             <a href="#" className="hover:text-red-600 transition-colors">Online-Unterricht</a>
-            <a href="#" className="hover:text-red-600 transition-colors">Kontakt</a>
+            <a href={`mailto:${emailAdresse}`} className="hover:text-red-600 transition-colors">Kontakt</a>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium">
-            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md shadow-red-600/10 hover:shadow-red-600/20 flex items-center gap-2">
+            {/* NEU: Button ist jetzt ein a-Tag mit mailto */}
+            <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md shadow-red-600/10 hover:shadow-red-600/20 flex items-center gap-2">
               Kontakt aufnehmen
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -72,10 +78,11 @@ export default function App() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
             >
-              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center gap-2 group">
+              {/* NEU: Button ist jetzt ein a-Tag mit mailto */}
+              <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center gap-2 group">
                 Kostenlose Probestunde
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </motion.div>
           </div>
 
@@ -178,10 +185,11 @@ export default function App() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
+                {/* NEU: Button ist jetzt ein a-Tag mit mailto */}
+                <a href={`mailto:${emailAdresse}?subject=${betreff}`} className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
                   Jetzt Probestunde vereinbaren
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
