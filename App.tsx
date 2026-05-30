@@ -120,4 +120,95 @@ export default function App() {
 
             {/* Die Leistungskarten basierend auf deinen Screenshots */}
             <div className="grid md:grid-cols-3 gap-8">
-              {
+              {[
+                {
+                  title: "Elementare Musikpädagogik",
+                  desc: "Der spielerische Einstieg in die Welt der Klänge für die Kleinsten. Rhythmusgefühl, Singen und Musik von Anfang an erleben.",
+                  icon: "01",
+                  color: "group-hover:text-yellow-500"
+                },
+                {
+                  title: "Instrumente aller Art",
+                  desc: "Egal ob Tasten-, Streich-, Blas-, Zupf- oder Schlaginstrumente. Wir bieten professionellen Unterricht für jedes Wunschinstrument.",
+                  icon: "02",
+                  color: "group-hover:text-red-500"
+                },
+                {
+                  title: "Tanzunterricht",
+                  desc: "Von Kindertanz bis hin zu Freestyle! Bewegung, Rhythmusgefühl und jede Menge Energie für alle Altersklassen.",
+                  icon: "03",
+                  color: "group-hover:text-blue-500"
+                }
+              ].map((feature, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 group"
+                >
+                  <div className={`text-5xl font-display font-black text-gray-200 ${feature.color} transition-colors mb-8`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-2xl font-display font-black text-gray-900 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed font-medium">
+                    {feature.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 🟢 BEREICH 4: ABSCHLUSS (CALL TO ACTION) */}
+        <section className="py-32 relative overflow-hidden bg-gray-50">
+          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <h2 className="text-5xl md:text-6xl font-display font-black text-gray-900 mb-6 leading-tight">
+                Lust auf ein <span className="text-red-600 italic">Abenteuer?</span>
+              </h2>
+              <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto font-medium">
+                Komm vorbei und probiere dein Wunschinstrument oder deine Tanzrichtung einfach aus. Unsere Lehrer freuen sich schon auf dich!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg shadow-red-600/20 hover:shadow-red-600/30 flex items-center justify-center gap-3">
+                  Jetzt Probestunde vereinbaren
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </main>
+
+      {/* 🟢 BEREICH 5: FOOTER - Passend zum Logo: Starkes Schwarz */}
+      <footer className="bg-black text-gray-400 py-12 border-t border-gray-900">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-red-600 flex items-center justify-center">
+              <Music className="w-3 h-3 text-white" />
+            </div>
+            <span className="font-display font-black tracking-wider text-white">MUSIKBOX</span>
+          </div>
+          <p className="text-sm font-medium">
+            &copy; {new Date().getFullYear()} Musikbox Musikschule. Alle Rechte vorbehalten. | [Impressum] | [Datenschutz]
+          </p>
+        </div>
+      </footer>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-15px) scale(1.01); }
+        }
+      `}</style>
+    </div>
+  );
+}
